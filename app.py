@@ -19,24 +19,13 @@ def set_background_image_local(image_path):
     st.markdown(
         f"""
         <style>
-         .stApp {
+         .stApp {{
             background-image: url("data:image/png;base64,{base64_image}");
             background-size: cover;
             background-position: center;
             background-repeat: repeat;
             background-attachment: fixed;
-            }
-            h1 {
-            font-size: 50px !important;  /* Adjust title size */
-                color: white;  /* Change color if needed */
-                text-align: center;
-            }
-            
-            p, h2, h3 {
-                font-size: 24px !important;  /* Adjust paragraph and heading sizes */
-                color: white;
-                text-align: center;
-            }     
+            }}     
         </style>
         """,
         unsafe_allow_html=True
@@ -64,9 +53,9 @@ dropdown_options = {feature: ml_df[feature].unique().tolist() for feature in cat
 tab1, tab2 = st.tabs(["Home", "Predict"])
 with tab1:
     st.markdown("""
-                <h1>**CarDekho Price Prediction App**</h1>
+                **CarDekho Price Prediction App**
                 
-                <p>🚗 Welcome to the CarDekho Price Prediction App! 🚗
+                *🚗 Welcome to the CarDekho Price Prediction App! 🚗
 
                 This app helps users predict the selling price of a used car based on various factors such as year of purchase, present price, fuel type, transmission type, and more.
 
@@ -79,7 +68,7 @@ with tab1:
                 ✅ Interactive user-friendly interface
                 ✅ Insights on car resale trends
                 
-                🚀 Try it now and get an instant price estimate!</p>
+                🚀 Try it now and get an instant price estimate!*
                 """)
 with tab2:
     a1,a2,a3=st.columns(3)
