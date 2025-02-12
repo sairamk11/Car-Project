@@ -53,46 +53,22 @@ dropdown_options = {feature: ml_df[feature].unique().tolist() for feature in cat
 tab1, tab2 = st.tabs(["Home", "Predict"])
 with tab1:
     st.markdown("""
-                **1. Introduction**
-                In the rapidly evolving automotive market, determining the right price for a vehicle is crucial 
-                for both buyers and sellers. The Car Price Prediction App provides an intelligent solution to 
-                estimate car prices based on key parameters using machine learning models. This tool helps users 
-                make data-driven decisions by leveraging historical data and predictive analytics.
+                **CarDekho Price Prediction App**
                 
-                **2. Problem Statement**
-                Buying or selling a car requires understanding its fair market value, which is influenced 
-                by multiple factors such as brand, model, year of manufacture, mileage, fuel type, and transmission. 
-                Manually evaluating these factors can be complex and time-consuming. The Car Price Prediction App simplifies 
-                this process by providing instant and accurate price predictions.
+                🚗 Welcome to the CarDekho Price Prediction App! 🚗
+
+                This app helps users predict the selling price of a used car based on various factors such as year of purchase, present price, fuel type, transmission type, and more.
+
+                🔍 How It Works:
+                Enter car details like brand, model, year, kilometers driven, fuel type, and more.
+                Click on Predict Price to get an estimated resale value.
+                Make informed decisions before buying or selling a car!
+                📊 Features:
+                ✅ Machine Learning-based price prediction
+                ✅ Interactive user-friendly interface
+                ✅ Insights on car resale trends
                 
-                **3. Key Features**
-                User-Friendly Interface: Simple and interactive Streamlit-based UI.
-                Machine Learning Model: Utilizes an advanced regression model (XGBRegressor) trained 
-                on a vast dataset of car prices.
-                Feature Inputs: Users can enter details like car brand, model, manufacturing year, fuel type, 
-                transmission, and other relevant attributes.
-                Real-Time Predictions: Provides instant car price estimates based on input parameters.
-                Comparison Tool: Allows users to compare multiple cars for better decision-making.
-                
-                **4. Target Audience**
-                Car Buyers & Sellers: Individuals looking to buy or sell a used car at a fair market price.
-                Dealerships & Businesses: Car dealerships and resellers who need an efficient way to estimate car values.
-                Financial Institutions: Banks and insurance companies that assess car values for loan and policy decisions.
-                
-                **5. Technologies Used**
-                Frontend: Streamlit for an interactive and user-friendly web application.
-                Backend: Python with machine learning libraries such as Scikit-learn, XGBoost, and Pandas.
-                Model Deployment: Trained ML model integrated into the Streamlit app for real-time predictions.
-                
-                **6. MLFlow**
-                In my project, I integrated MLflow to efficiently track and manage machine learning experiments within my Streamlit application. 
-                I used MLflow to log important details such as model parameters, performance metrics (like MSE, MAE, and R2),
-                and the trained models themselves. link: http://127.0.0.1:5001
-                
-                **7. Conclusion**
-                The Car Price Prediction App is a powerful tool for individuals and businesses looking to evaluate 
-                car prices efficiently. By leveraging machine learning, it offers a seamless experience in determining a 
-                car's fair value, making the buying and selling process more transparent and informed.
+                🚀 Try it now and get an instant price estimate!
                 """)
 with tab2:
     a1,a2,a3=st.columns(3)
