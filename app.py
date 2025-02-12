@@ -22,7 +22,7 @@ def set_background_image_local(image_path):
         .stApp {{
             background-image: url("data:image/png;base64,{base64_image}");
             background-size: cover;
-            background-position: fit;
+            background-position: center;
             background-repeat: repeat;
             background-attachment: fixed;
         }}     
