@@ -19,7 +19,7 @@ def set_background_image_local(image_path):
     st.markdown(
         f"""
         <style>
-        .stApp {{
+         body {
             background-image: url("data:image/png;base64,{base64_image}");
             background-size: cover;
             background-position: center;
@@ -36,8 +36,7 @@ def set_background_image_local(image_path):
                 font-size: 24px !important;  /* Adjust paragraph and heading sizes */
                 color: white;
                 text-align: center;
-            }
-        }     
+            }     
         </style>
         """,
         unsafe_allow_html=True
