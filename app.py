@@ -50,7 +50,7 @@ st.title("Car Price Prediction App")
 categorical_features = ["city", "ft", "bt", "transmission", "oem", "model", "variantName", "Insurance Validity"]
 dropdown_options = {feature: ml_df[feature].unique().tolist() for feature in categorical_features}
 
-tab1, tab2 = st.tabs(["Home", "Predict"])
+tab1, tab2, tab3 = st.tabs(["Home", "Predict", "Chatbot"])
 with tab1:
     st.markdown("""
                 **CarDekho Price Prediction App**
@@ -127,3 +127,44 @@ with tab2:
                 
         st.subheader("Predicted Car Price")
         st.markdown(f"### :green[₹ {prediction[0]:,.2f}]")
+with tab3:
+    @st.cache_data
+    def load_car_data():
+        return pd.read_excel(r"ml_dl.xlsx")
+    def get_car_details_by_brand_or_model(name, df):
+        df = df.dropna(subset=['oem', 'model'])  # Ensure 'oem' and 'model' have no NaN values
+
+        # Normalize case for comparison
+        name_lower = name.lower()
+        df['oem'] = df['oem'].str.lower()
+        df['model'] = df['model'].str.lower()
+
+        # Check if name matches an OEM (brand)
+        if name_lower in df['oem'].unique():
+            filtered_cars = df[df['oem'] == name_lower]
+            if filtered_cars.empty:
+                return [{"message": f"No cars found for brand: {name}"}]
+            return filtered_cars.head(5)[['oem', 'model', 'price', 'ft', 'transmission']].to_dict('records')
+
+        # Check if name matches a model
+        elif name_lower in df['model'].unique():
+            filtered_cars = df[df['model'] == name_lower]
+            if filtered_cars.empty:
+                return [{"message": f"No cars found for model: {name}"}]
+            return filtered_cars.head(5)[['oem', 'model', 'price', 'ft', 'transmission']].to_dict('records')
+
+        return [{"message": f"No cars found for brand or model: {name}"}]
+
+    st.header("Car Chatbot Assistant 💬")
+    df = load_car_data()
+            
+    user_query = st.text_input("Ask me about cars!", "")
+
+    if user_query:
+            if "tell me about" in user_query.lower():
+                brand_name = user_query.lower().replace("tell me about", "").strip()
+                details = get_car_details_by_brand_or_model(brand_name, df)
+                st.write("### Car Details")
+                st.write(d for d in details)
+            else:
+                st.write("I'm still learning to answer more queries!")
